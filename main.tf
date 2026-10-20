@@ -3,27 +3,15 @@ data "azurerm_resource_group" "existing" {
 }
 
 module "storage_account" {
-  source = "./modules/storage-account"
+  source   = "./modules/storage-account"
+  for_each = var.storage_accounts
 
-  storage_account_name = var.storage_account_name
+  storage_account_name = each.value
   resource_group_name  = data.azurerm_resource_group.existing.name
   location             = data.azurerm_resource_group.existing.location
 
   tags = {
-    environment = "development"
+    environment = each.key
     managed_by  = "terraform"
-  }
-}
-
-module "storage_account_test" {
-  source = "./modules/storage-account"
-
-  storage_account_name = "mintymango1288"
-  resource_group_name = data.azurerm_resource_group.existing.name
-  location = data.azurerm_resource_group.existing.location
-
-  tags = {
-    environment = "test"
-    managed_by = "terraform"
   }
 }
