@@ -18,12 +18,12 @@ module "storage_account" {
 module "storage_account_test" {
   source = "./modules/storage-account"
 
-  storage_account_name = "mintymango1287"
-  resource_group_name  = data.azurerm_resource_group.existing.name
-  location             = data.azurerm_resource_group.existing.location
+  storage_account_name = "mintymango1288"
+  resource_group_name = data.azurerm_resource_group.existing.name
+  location = data.azurerm_resource_group.existing.location
 
   tags = {
     environment = "test"
-    managed_by  = "terraform"
+    managed_by = "terraform"
   }
 }
