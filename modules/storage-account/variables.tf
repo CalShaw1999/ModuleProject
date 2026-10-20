@@ -24,3 +24,9 @@ variable "replication_type" {
   type        = string
   default     = "LRS"
 }
+
+variable "tags" {
+  description = "Tags to apply to the SA"
+  type        = map(string)
+  default     = {}
+}
