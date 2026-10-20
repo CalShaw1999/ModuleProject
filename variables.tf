@@ -12,3 +12,8 @@ variable "storage_account_name" {
   description = "Name of SA"
   type        = string
 }
+
+variable "storage_accounts" {
+  description = "SA names indexed by environment"
+  type = map(string)
+ }
